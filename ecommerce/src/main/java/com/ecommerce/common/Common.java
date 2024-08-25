@@ -1,5 +1,5 @@
 package com.ecommerce.common;
-
+ 
 /**
  * Utility class for common use where the treatment of dates is centralized, 
  * such as the format and the conversion of string to date and date to String.
