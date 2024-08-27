@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommerce.common.Common;
+import com.ecommerce.exception.BadRequestException;
 import com.ecommerce.model.dto.PriceDto;
 import com.ecommerce.service.PriceI;
 
@@ -21,10 +23,23 @@ public class PriceController {
 
 	@Autowired
 	private PriceI priceI;
+	
+	@Autowired
+	private Common common;
 
 	@GetMapping("{applicationdate}/{productid}/{brandid}")
 	public ResponseEntity<PriceDto> getFee(@PathVariable("applicationdate") String applicationDate,
 			@PathVariable("productid") int productId, @PathVariable("brandid") int brandId) {
+		
+		//Validating parameter
+		if (!common.isDateValid(applicationDate))
+			throw new BadRequestException(common.getMessage("msg.date.format.incorrect"));
+
+		if (productId <= 0)
+			throw new BadRequestException(common.getMessage("msg.product.id.invalid"));
+
+		if (brandId <= 0)
+			throw new BadRequestException(common.getMessage("msg.brand.id.invalid"));
 
 		return new ResponseEntity<>(priceI.getPriceInfo(applicationDate, productId, brandId), HttpStatus.OK);
 	}

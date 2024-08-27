@@ -11,7 +11,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.common.Common;
-import com.ecommerce.exception.BadRequestException;
 import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.dto.PriceDto;
 import com.ecommerce.model.entity.PriceEntity;
@@ -32,15 +31,6 @@ public class PriceImpl implements PriceI {
 
 	@Override
 	public PriceDto getPriceInfo(String dateApplication, int productId, int brandId) {
-		//Validating parameter
-		if (!common.isDateValid(dateApplication))
-			throw new BadRequestException(common.getMessage("msg.date.format.incorrect"));
-
-		if (productId <= 0)
-			throw new BadRequestException(common.getMessage("msg.product.id.invalid"));
-
-		if (brandId <= 0)
-			throw new BadRequestException(common.getMessage("msg.brand.id.invalid"));
 		
 		//Casting String Date parameter to LocalDateTime
 		LocalDateTime date = common.convertStringToLocalDateTime(dateApplication);
