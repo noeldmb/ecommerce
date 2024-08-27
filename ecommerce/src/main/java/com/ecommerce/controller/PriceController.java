@@ -25,7 +25,7 @@ public class PriceController {
 	private PriceI priceI;
 	
 	@Autowired
-	private Common common;
+	private Common common; 
 
 	@GetMapping("{applicationdate}/{productid}/{brandid}")
 	public ResponseEntity<PriceDto> getFee(@PathVariable("applicationdate") String applicationDate,

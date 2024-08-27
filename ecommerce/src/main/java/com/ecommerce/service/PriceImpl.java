@@ -26,7 +26,7 @@ public class PriceImpl implements PriceI {
 	public PriceImpl(PriceRepository priceRepository, Common common, ModelMapper modelMapper) {
 		this.priceRepository = priceRepository;
 		this.common = common;
-		this.modelMapper = modelMapper;
+		this.modelMapper = modelMapper; 
 	}
 
 	@Override
