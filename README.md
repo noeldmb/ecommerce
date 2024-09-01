@@ -35,11 +35,14 @@ Short Description About different classes
     such as the format and the conversion of string to date and date to String.
     Access to the resource file "application.properties" is implemented as well as date validation.
   
-- LoadData => Component created to load the Test data into the H2 database at starting the Application start.
+- LoadData => A component was created to load the test data into the H2 database at the start of the application.
 
 # Below are some tests performed as well as the results of the tests in Postman:
 
 - Test 1: Request at 10:00 on the 14th for product 35455 for brand 1:
+
+http://localhost:8080/ecom/2020-06-14 10:00:00/35455/1
+![image](https://github.com/user-attachments/assets/efdfcf8d-8d40-478f-b62f-e1eb11956189)
 
 
 - Test 2: Request at 16:00 on day 14 for product 35455 for brand 1:
