@@ -47,19 +47,33 @@ http://localhost:8080/ecom/2020-06-14 10:00:00/35455/1
 
 - Test 2: Request at 16:00 on day 14 for product 35455 for brand 1:
 
+http://localhost:8080/ecom/2020-06-14 16:00:00/35455/1 
+![image](https://github.com/user-attachments/assets/1f51d9bf-0be5-4d71-b7e0-da119658dc9b)
 
 - Test 3: Request at 21:00 on day 14 for product 35455 for brand 1
+
+http://localhost:8080/ecom/2020-06-14 21:00:00/35455/1
+![image](https://github.com/user-attachments/assets/16cfe0f3-200d-4eae-a2e6-1f05253990c9)
 
 
 - Test 4: Request at 10:00 on the 15th for product 35455 for brand 1
 
+http://localhost:8080/ecom/2020-06-15 10:00:00/35455/1 
+![image](https://github.com/user-attachments/assets/d7fde655-846e-4b61-b999-e3289c5a6ed8)
+
 
 - Test 5: Request at 21:00 on day 16 for product 35455 for brand 1
 
+http://localhost:8080/ecom/2020-06-16 21:00:00/35455/1 
+![image](https://github.com/user-attachments/assets/af716ab3-2455-4e60-94ac-f8669a66f003)
 
 - Bad date format
 
+http://localhost:8080/ecom/2020-06-50 21:00:00/35455/1 
+![image](https://github.com/user-attachments/assets/4bca3ef6-0a37-4910-9c70-9bd7df80c587)
 
 - Brand Id = 0
 
+http://localhost:8080/ecom/2020-06-14 21:00:00/35455/0 
+![image](https://github.com/user-attachments/assets/af58a38d-55f1-453f-bd7f-a5a87435f829)
 
