@@ -8,7 +8,7 @@ The Company needs to know the price of one product depending on time, brand, and
 
 It was developed a Microservice with the following structure:
 
-image
+
 
 Short Description About different classes
 
