@@ -7,3 +7,4 @@ The Company needs to know the price of one product depending on time, brand, and
 
 It was developed a Microservice with the following structure:
 
+![image](https://github.com/user-attachments/assets/3624b56c-29ab-49d4-a462-1f5575947d87)
