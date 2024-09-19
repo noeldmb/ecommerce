@@ -1,15 +1,18 @@
 package com.ecommerce.exception;
 
-/**
+import lombok.Getter;
+
+/*
  * A POJO class holding the information that be shown for Exception that be
  * thrown.
  */
+@Getter
 public class ErrorMessage {
 
-	private int statusCode;
-	private String timestamp;
-	private String message;
-	private String description;
+	private final int statusCode;
+	private final String timestamp;
+	private final String message;
+	private final String description;
 
 	public ErrorMessage(int statusCode, String string, String message, String description) {
 		this.statusCode = statusCode;
@@ -18,19 +21,4 @@ public class ErrorMessage {
 		this.description = description;
 	}
 
-	public int getStatusCode() {
-		return statusCode;
-	}
-
-	public String getTimestamp() {
-		return timestamp;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public String getDescription() {
-		return description;
-	}
 }
