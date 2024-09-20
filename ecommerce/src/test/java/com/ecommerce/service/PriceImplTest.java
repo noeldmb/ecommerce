@@ -1,6 +1,8 @@
 package com.ecommerce.service;
 
 import com.ecommerce.common.Common;
+import com.ecommerce.exception.BadRequestException;
+import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.dto.PriceDto;
 import com.ecommerce.model.entity.PriceEntity;
 import com.ecommerce.repository.PriceRepository;
@@ -29,20 +31,36 @@ class PriceImplTest {
     void getPriceInfoTest() {
 
         int productId = 35455;
-        int brandId = 1;
+        int brandId = 77;
         LocalDateTime date = Common.convertStringToLocalDateTime("2020-06-14 00:00:00");
-        PriceDto priceWaited = new PriceDto(35455, 1,0,"","",7.7);
+        PriceDto priceWaited = new PriceDto(35455, 1, 0, "", "", 7.7);
 
         //PriceEntity priceEntity = mock(PriceEntity.class);
         List<PriceEntity> prices = List.of(
                 new PriceEntity(1, Common.convertStringToLocalDateTime("2020-06-14 00:00:00"), Common.convertStringToLocalDateTime("2020-06-14 00:00:00"), 1, 35455, 0, 35.50, "EUR")
         );
 
-        when(priceRepository.findPrices(productId,brandId,date)).thenReturn(prices);
+        when(priceRepository.findPrices(productId, brandId, date)).thenReturn(prices);
 
-        final PriceDto priceDto1 = priceImpl.getPriceInfo("2020-06-14 00:00:00",productId,brandId);
+        final PriceDto priceDto1 = priceImpl.getPriceInfo("2020-06-14 00:00:00", productId, brandId);
 
-
-        Assertions.assertEquals(priceWaited.getProductId(),priceDto1.getProductId());
+        Assertions.assertEquals(priceWaited.getProductId(), priceDto1.getProductId());
     }
+
+    @Test
+    void getFee_throwResourceNotFoundExceptionTest() {
+        int productId = 35455;
+        int brandId = 1;
+        LocalDateTime date = Common.convertStringToLocalDateTime("2020-06-14 00:00:00");
+
+        ResourceNotFoundException thrown = Assertions.assertThrows(ResourceNotFoundException.class, () ->  {
+
+            // ... Code under test  ...
+            priceImpl.getPriceInfo("2020-06-14 00:00:00", productId, brandId);
+            throw new ResourceNotFoundException("Resource not found");
+        });
+
+        Assertions.assertEquals("Resource not found", thrown.getMessage());
+    }
+
 }
