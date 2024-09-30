@@ -17,27 +17,34 @@ import com.ecommerce.common.Common;
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
+    private final Common common;
+    private final String description;
+
+    public ControllerExceptionHandler(Common common) {
+        this.common = common;
+        this.description = common.getMessage("spring.application.name");
+    }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     public ErrorMessage resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
 
-        return new ErrorMessage(HttpStatus.NOT_FOUND.value(), Common.getCurrentDay(), ex.getMessage(),
-                request.getDescription(false));
+        return new ErrorMessage(HttpStatus.NOT_FOUND.value(), common.getCurrentDay(), common.getMessage(ex.getMessage()),
+                description);
     }
 
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorMessage BadRequestException(BadRequestException ex, WebRequest request) {
 
-        return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), Common.getCurrentDay(), ex.getMessage(),
-                request.getDescription(false));
+        return new ErrorMessage(HttpStatus.BAD_REQUEST.value(), common.getCurrentDay(), common.getMessage(ex.getMessage()), description);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorMessage globalExceptionHandler(Exception ex, WebRequest request) {
 
-        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), Common.getCurrentDay(),
-                ex.getMessage(), request.getDescription(false));
+        return new ErrorMessage(HttpStatus.INTERNAL_SERVER_ERROR.value(), common.getCurrentDay(),
+                ex.getMessage(), description);
     }
 }

@@ -11,7 +11,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ecommerce.common.Common;
-import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.dto.PriceDto;
 import com.ecommerce.model.entity.PriceEntity;
 import com.ecommerce.repository.PriceRepository;
@@ -20,23 +19,25 @@ import com.ecommerce.repository.PriceRepository;
 public class PriceImpl implements PriceI {
 
     private final PriceRepository priceRepository;
+    private final Common common;
 
-    public PriceImpl(PriceRepository priceRepository) {
+    public PriceImpl(PriceRepository priceRepository, Common common) {
         this.priceRepository = priceRepository;
+        this.common = common;
     }
 
     @Override
     public PriceDto getPriceInfo(String dateApplication, int productId, int brandId) {
 
         //Casting String Date parameter to LocalDateTime
-        LocalDateTime date = Common.convertStringToLocalDateTime(dateApplication);
+        LocalDateTime date = common.convertStringToLocalDateTime(dateApplication);
 
         //Fetching information to data Bases according parameter
         List<PriceEntity> prices = priceRepository.findPrices(productId, brandId, date);
 
         //If not exist information in database an Exception is thrown.
         if (prices.isEmpty())
-            throw new ResourceNotFoundException(Common.MSG_RESOURCE_NOT_FOUND);
+            return null;
 
         PriceEntity priceEntity = prices.stream().max(Comparator.comparing(PriceEntity::getPriority)).get();
 
@@ -45,8 +46,8 @@ public class PriceImpl implements PriceI {
                 priceEntity.getProductId(),
                 priceEntity.getBrandId(),
                 priceEntity.getPriceList(),
-                Common.convertLocalDateTimeToString(priceEntity.getStartDate()),
-                Common.convertLocalDateTimeToString(priceEntity.getEndDate()),
+                common.convertLocalDateTimeToString(priceEntity.getStartDate()),
+                common.convertLocalDateTimeToString(priceEntity.getEndDate()),
                 priceEntity.getPrice());
     }
 

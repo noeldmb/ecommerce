@@ -1,6 +1,8 @@
 package com.ecommerce.controller;
 
+import com.ecommerce.common.Common;
 import com.ecommerce.exception.BadRequestException;
+import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.dto.PriceDto;
 import com.ecommerce.service.PriceImpl;
 import org.junit.jupiter.api.Assertions;
@@ -22,6 +24,9 @@ class PriceControllerTest {
     @Mock
     PriceImpl priceImpl;
 
+    @Mock
+    private Common common;
+
     @InjectMocks
     PriceController priceController;
 
@@ -42,6 +47,7 @@ class PriceControllerTest {
         PriceDto response = new PriceDto(35455, 1, 0, "", "", 7.7);
 
         when(priceImpl.getPriceInfo(date, productId, brandId)).thenReturn(response);
+        when(common.isDateValid(date)).thenReturn(true);
 
         ResponseEntity<PriceDto> result = priceController.getFee(date, productId, brandId);
 
@@ -56,36 +62,55 @@ class PriceControllerTest {
 
             // ... Code under test  ...
             priceController.getFee("2020-50-14 00:00:00", productId, brandId);
-            throw new BadRequestException("Format of Date incorrect, correct format yyyy-MM-dd HH:mm:ss");
+            throw new BadRequestException("msg.date.format.incorrect");
         });
 
-        Assertions.assertEquals("Format of Date incorrect, correct format yyyy-MM-dd HH:mm:ss", thrown.getMessage());
+        Assertions.assertEquals("msg.date.format.incorrect", thrown.getMessage());
     }
 
     @Test
     void getFee_throwBadRequestExceptionInvalidProductIdTest() {
 
+        when(common.isDateValid(date)).thenReturn(true);
+
         BadRequestException thrown = Assertions.assertThrows(BadRequestException.class, () -> {
 
             // ... Code under test  ...
             priceController.getFee(date, 0, brandId);
-            throw new BadRequestException("Product ID invalid");
+            throw new BadRequestException("msg.product.id.invalid");
         });
 
-        Assertions.assertEquals("Product ID invalid", thrown.getMessage());
+        Assertions.assertEquals("msg.product.id.invalid", thrown.getMessage());
     }
 
     @Test
     void getFee_throwBadRequestExceptionInvalidBrandIdTest() {
 
+        when(common.isDateValid(date)).thenReturn(true);
+
         BadRequestException thrown = Assertions.assertThrows(BadRequestException.class, () -> {
 
             // ... Code under test  ...
             priceController.getFee(date, productId, 0);
-            throw new BadRequestException("Brand ID invalid");
+            throw new BadRequestException("msg.brand.id.invalid");
         });
 
-        Assertions.assertEquals("Brand ID invalid", thrown.getMessage());
+        Assertions.assertEquals("msg.brand.id.invalid", thrown.getMessage());
+    }
+
+    @Test
+    void getFee_throwResourceNotFoundExceptionTest() {
+
+        when(common.isDateValid(date)).thenReturn(true);
+
+        ResourceNotFoundException thrown = Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+
+            // ... Code under test  ...
+            priceController.getFee(date, productId, 2);
+            throw new ResourceNotFoundException("msg.resource.not.found");
+        });
+
+        Assertions.assertEquals("msg.resource.not.found", thrown.getMessage());
     }
 
 }

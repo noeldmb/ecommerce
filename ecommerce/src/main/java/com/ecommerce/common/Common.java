@@ -11,18 +11,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Common {
 
-    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    public static final String MSG_DATE_FORMAT_INCORRECT = "Format of Date incorrect, correct format yyyy-MM-dd HH:mm:ss";
-    public static final String MSG_PRODUCT_ID_INVALID = "Product ID invalid";
-    public static final String MSG_RESOURCE_NOT_FOUND = "Resource not found";
-    public static final String MSG_BRAND_ID_INVALID =  "Brand ID invalid";
+    @Autowired
+    private final Environment environment;
 
-    public static boolean isDateValid(String date) {
+    public Common(Environment environment) {
+        this.environment = environment;
+    }
+
+    public boolean isDateValid(String date) {
 
         if (StringUtils.isBlank(date))
             return false;
@@ -39,17 +42,21 @@ public class Common {
         return true;
     }
 
-    public static String getCurrentDay() {
-        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(Objects.requireNonNull(DATE_FORMAT)));
+    public String getCurrentDay() {
+        return LocalDateTime.now().format(DateTimeFormatter.ofPattern(Objects.requireNonNull(environment.getProperty("date.format"))));
     }
 
-    public static LocalDateTime convertStringToLocalDateTime(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Objects.requireNonNull(DATE_FORMAT));
+    public LocalDateTime convertStringToLocalDateTime(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Objects.requireNonNull(environment.getProperty("date.format")));
 
         return LocalDateTime.parse(date, formatter);
     }
 
-    public static String convertLocalDateTimeToString(LocalDateTime date) {
-        return date.format(DateTimeFormatter.ofPattern(Objects.requireNonNull(DATE_FORMAT)));
+    public String convertLocalDateTimeToString(LocalDateTime date) {
+        return date.format(DateTimeFormatter.ofPattern(Objects.requireNonNull(environment.getProperty("date.format"))));
+    }
+
+    public String getMessage(String keyOfMessage) {
+        return environment.getProperty(keyOfMessage);
     }
 }

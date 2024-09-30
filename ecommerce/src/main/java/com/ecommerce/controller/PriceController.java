@@ -5,6 +5,7 @@ package com.ecommerce.controller;
  * with the objective of knowing the price to apply to a Product in a specific time.
  */
 
+import com.ecommerce.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +23,11 @@ import com.ecommerce.service.PriceI;
 public class PriceController {
 
     private final PriceI priceI;
+    private final Common common;
 
-    public PriceController(PriceI priceI) {
+    public PriceController(PriceI priceI, com.ecommerce.common.Common common) {
         this.priceI = priceI;
+        this.common = common;
     }
 
     @GetMapping("{applicationdate}/{productid}/{brandid}")
@@ -32,15 +35,21 @@ public class PriceController {
                                            @PathVariable("productid") int productId, @PathVariable("brandid") int brandId) {
 
         //Validating parameter
-        if (!Common.isDateValid(applicationDate))
-            throw new BadRequestException(Common.MSG_DATE_FORMAT_INCORRECT);
+        if (!common.isDateValid(applicationDate))
+            throw new BadRequestException("msg.date.format.incorrect");
 
         if (productId <= 0)
-            throw new BadRequestException(Common.MSG_PRODUCT_ID_INVALID);
+            throw new BadRequestException("msg.product.id.invalid");
 
         if (brandId <= 0)
-            throw new BadRequestException(Common.MSG_BRAND_ID_INVALID);
+            throw new BadRequestException("msg.brand.id.invalid");
 
-        return new ResponseEntity<>(priceI.getPriceInfo(applicationDate, productId, brandId), HttpStatus.OK);
+        PriceDto currentPrice = priceI.getPriceInfo(applicationDate, productId, brandId);
+
+        //Validating response
+        if (currentPrice == null)
+            throw new ResourceNotFoundException("msg.resource.not.found");
+
+        return new ResponseEntity<>(currentPrice, HttpStatus.OK);
     }
 }
