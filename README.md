@@ -7,6 +7,8 @@ The Company needs to know the price of one product depending on time, brand, and
 
 It was developed a Microservice with the following structure:
 
+NOTE: Once Backend is started accessing this URL, http://localhost:8080/swagger-ui/index.html, you better understand endpoint/s.
+
 ![image](https://github.com/user-attachments/assets/3624b56c-29ab-49d4-a462-1f5575947d87)
 
 Short Description About different classes
