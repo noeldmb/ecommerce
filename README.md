@@ -7,6 +7,10 @@ The Company needs to know the price of one product depending on time, brand, and
 
 It was developed a Microservice with the following structure:
 
+NOTE: Once Backend starts accessing this URL, http://localhost:8080/swagger-ui/index.html, you will better understand endpoint/s. For example: with parameters "applicationdate" = "2020-06-14 16:00:00", "productid" = 35455, and "brandid" = 1.
+
+Structure of Application in next image:
+
 ![image](https://github.com/user-attachments/assets/3624b56c-29ab-49d4-a462-1f5575947d87)
 
 Short Description About different classes
