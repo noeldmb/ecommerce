@@ -87,5 +87,6 @@ http://localhost:8080/ecom/2020-06-50 21:00:00/35455/1
 - Brand Id = 0
 
 http://localhost:8080/ecom/2020-06-14 21:00:00/35455/0 
-![image](https://github.com/user-attachments/assets/af58a38d-55f1-453f-bd7f-a5a87435f829)
+![image](https://github.com/user-attachments/assets/bc0d0408-159f-4964-9522-0e7ad601e9e1)
+
 
