@@ -24,6 +24,7 @@ It was developed as a Spring Boot Microservice with the following features:
 - Unit test (JUnit and Mockito).
 - Automating API Tests with Postman (postman_ecommerce_collection.json).
 - Handle Custom message from "application.properties".
+- Custom Controller's parameters validation.
 
 NOTE: Once Backend starts accessing this URL, http://localhost:8080/swagger-ui/index.html, you will better understand endpoint/s. For example: with parameters "applicationdate" = "2020-06-14 16:00:00", "productid" = 35455, and "brandid" = 1.
 
