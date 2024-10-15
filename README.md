@@ -14,7 +14,16 @@ To validate the integrity of the information, the following tests must be carrie
 - Test 4: request at 10:00 on the 15th for product 35455 for brand 1.
 - Test 5: request at 21:00 on the 16th for product 35455 for brand 1.
 
-It was developed as a Microservice with the following structure:
+It was developed as a Spring Boot Microservice with the following features:
+
+- Layered architecture (Controller, service and repository).
+- H2 Database.
+- DTO.
+- Spring boot JPA.
+- Exception handle (@RestControllerAdvice) and  custom exception.
+- Unit test (JUnit and Mockito).
+- Automating API Tests with Postman (postman_ecommerce_collection.json).
+- Handle Custom message from "application.properties".
 
 NOTE: Once Backend starts accessing this URL, http://localhost:8080/swagger-ui/index.html, you will better understand endpoint/s. For example: with parameters "applicationdate" = "2020-06-14 16:00:00", "productid" = 35455, and "brandid" = 1.
 
