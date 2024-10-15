@@ -82,8 +82,7 @@ http://localhost:8080/ecom/2020-06-16 21:00:00/35455/1
 - Bad date format
 
 http://localhost:8080/ecom/2020-06-50 21:00:00/35455/1 
-![image](https://github.com/user-attachments/assets/d9340bd1-c158-4334-996c-08e7d24eed1d)
-
+![image](https://github.com/user-attachments/assets/f50edb83-4529-49dc-a68f-01cac698fad3)
 
 - Brand Id = 0
 
