@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "e9cf9a46-8564-4a77-9fb3-32f18d77d44d",
+		"name": "Ecommerce_Colletction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27561430"
+	},
+	"item": [
+		{
+			"name": "Price 14th day at 10:00",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Price at 10:00 14th day\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedPrice = pm.environment.get(\"rightPriceDay14Hour10\");\r",
+							"\r",
+							"    pm.expect(jsonData.price).to.eql(expectedPrice);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"rightPriceDay14Hour10\", 35.5);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-14 10:00:00/35455/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Price 14th day at 16:00",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"rightPriceDay14Hour16\", 25.45);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Price at 16:00 14th day\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedPrice = pm.environment.get(\"rightPriceDay14Hour16\");\r",
+							"\r",
+							"    pm.expect(jsonData.price).to.eql(expectedPrice);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-14 16:00:00/35455/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Price 14th day at 21:00",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"rightPriceDay14Hour21\", 35.5);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Price at 21:00 14th day\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedPrice = pm.environment.get(\"rightPriceDay14Hour21\");\r",
+							"\r",
+							"    pm.expect(jsonData.price).to.eql(expectedPrice);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-14 21:00:00/35455/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Price 15th day at 10:00",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"rightPriceDay15Hour10\", 30.5);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Price at 10:00 15th day\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedPrice = pm.environment.get(\"rightPriceDay15Hour10\");\r",
+							"\r",
+							"    pm.expect(jsonData.price).to.eql(expectedPrice);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-15 10:00:00/35455/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Price 16th day at 21:00",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"rightPriceDay16Hour21\", 38.95);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Price at 21:00 16th day\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedPrice = pm.environment.get(\"rightPriceDay16Hour21\");\r",
+							"\r",
+							"    pm.expect(jsonData.price).to.eql(expectedPrice);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-16 21:00:00/35455/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Bad date format error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Bad day format\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.message).to.eql(\"Format of Date incorrect, correct format yyyy-MM-dd HH:mm:ss\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-50 21:00:00/35455/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Brand id = 0 no valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Brand ID invalid\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData.message).to.eql(\"Brand ID invalid\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/ecom/2020-06-14 21:00:00/35455/0"
+			},
+			"response": []
+		}
+	]
+}
