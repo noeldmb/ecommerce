@@ -7,6 +7,7 @@ package com.ecommerce.service;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,9 @@ public class PriceImpl implements PriceI {
             return null;
 
         PriceEntity priceEntity = prices.stream().max(Comparator.comparing(PriceEntity::getPriority)).get();
+
+        List<String> s = Stream.of("noel","mena").filter(n -> n.contains("a")).toList();
+
 
         //The entity is casting to DTO
         return new PriceDto(
