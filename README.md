@@ -3,9 +3,9 @@ Online shopping
 
 The company's e-commerce database has the PRICES table, which reflects the final price (RRP) and the rate applied to a product in a chain between certain dates.
 
-The Company needs to know the price of one product depending on time, brand, and date, to achieve this goal it is needs to create an Endpoint that Returns as output data: product identifier, chain identifier, rate to apply, application dates, and final price to apply.
+The Company needs to know the price of one product depending on time, brand, and date, to achieve this goal it needs to create an Endpoint that Returns as output data: product identifier, chain identifier, rate to apply, application dates, and final price to apply.
 
-In order to validate the veracity of the information, the following tests must be carried out:
+To validate the integrity of the information, the following tests must be carried out:
 
 - Test 1: request at 10:00 on the 14th for product 35455 for brand 1.
 - Test 2: request at 16:00 on the 14th for product 35455 for brand 1.
@@ -13,7 +13,7 @@ In order to validate the veracity of the information, the following tests must b
 - Test 4: request at 10:00 on the 15th for product 35455 for brand 1.
 - Test 5: request at 21:00 on the 16th for product 35455 for brand 1.
 
-It was developed a Microservice with the following structure:
+It was developed as a Microservice with the following structure:
 
 NOTE: Once Backend starts accessing this URL, http://localhost:8080/swagger-ui/index.html, you will better understand endpoint/s. For example: with parameters "applicationdate" = "2020-06-14 16:00:00", "productid" = 35455, and "brandid" = 1.
 
@@ -30,10 +30,10 @@ Short Description About different classes
 - PriceI => Interface declaring the contract that will be implemented by the service/s.
 
 - PriceImpl => Service implementing the contract defined by the interface "PriceI", and the logic
-    needed to know the right price for a product in specific time of day and Brand.
+    needed to know the right price for a product at a specific time of day and brand.
 
 - PriceEntity => A POJOs class representing data that can be persisted in the database. In this case information about 
-    PRICE depending of fee in the moment the it is requested or needed to known the right price. 
+    PRICE depends on the fee when it is requested or needed to know the right price. 
 
 - PriceDto => A POJO class that will contain the structure and date that will be returned like respond by the "getFee()" Endpoint.
 
