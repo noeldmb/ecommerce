@@ -16,14 +16,14 @@ To validate the integrity of the information, the following tests must be carrie
 
 It was developed as a Spring Boot Microservice with the following features:
 
-- Layered architecture (Controller, service and repository).
+- Layered architecture (Controller, service, and repository).
 - H2 Database.
 - DTO.
 - Spring boot JPA.
 - Exception handle (@RestControllerAdvice) and  custom exception.
 - Unit test (JUnit and Mockito).
 - Automating API Tests with Postman (postman_ecommerce_collection.json).
-- Handle Custom message from "application.properties".
+- Handle Custom messages from "application.properties".
 - Custom Controller's parameters validation.
 - Swagger implementation.
 
@@ -31,7 +31,8 @@ NOTE: Once Backend starts accessing this URL, http://localhost:8080/swagger-ui/i
 
 Structure of Application in next image:
 
-![image](https://github.com/user-attachments/assets/3624b56c-29ab-49d4-a462-1f5575947d87)
+![image](https://github.com/user-attachments/assets/a8b733d6-c824-4f1a-bf89-9d43dd8f3f9d)
+
 
 Short Description About different classes
 
