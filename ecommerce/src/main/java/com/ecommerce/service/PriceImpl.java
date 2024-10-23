@@ -42,9 +42,6 @@ public class PriceImpl implements PriceI {
 
         PriceEntity priceEntity = prices.stream().max(Comparator.comparing(PriceEntity::getPriority)).get();
 
-        List<String> s = Stream.of("noel","mena").filter(n -> n.contains("a")).toList();
-
-
         //The entity is casting to DTO
         return new PriceDto(
                 priceEntity.getProductId(),
