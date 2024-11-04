@@ -26,6 +26,7 @@ It was developed as a Spring Boot Microservice with the following features:
 - Handle Custom messages from "application.properties".
 - Custom Controller's parameters validation.
 - Swagger implementation.
+- Enable Transaction Management operation to database. 
 
 NOTE: Once Backend starts accessing this URL, http://localhost:8080/swagger-ui/index.html, you will better understand endpoint/s. For example: with parameters "applicationdate" = "2020-06-14 16:00:00", "productid" = 35455, and "brandid" = 1.
 

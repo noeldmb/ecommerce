@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.ecommerce.model.entity.PriceEntity;
 import com.ecommerce.repository.PriceRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class LoadData implements CommandLineRunner {
@@ -24,6 +25,7 @@ public class LoadData implements CommandLineRunner {
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
 
         List<PriceEntity> prices = List.of(
